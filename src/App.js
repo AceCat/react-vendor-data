@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Table, TableRow } from './table.js';
+import { Pagination } from './paginate.js'
 var api = require('./api.js');
 
 
@@ -11,8 +12,11 @@ class App extends React.Component {
   super(props)
   this.state = {
     data: [],
-    rows: []
+    currentPage: 1,
+    itemsPerPage: 10
   }
+  this.changePage = this.changePage.bind(this);
+
 }
 
 
@@ -23,21 +27,28 @@ class App extends React.Component {
         self.setState({
           data: response
         });
-        self.state.data.forEach(function(vendor) {
-          self.state.rows.push(<TableRow key={self.state.data.indexOf(vendor)} Vendor_Name={vendor.vendor_name} Amount={vendor.total} />);
-        }.bind(this));
     })
+  }
+
+  changePage(pageNum) {
+    this.setState({currentPage: pageNum})
   }
 
 
 
-
   render() {
-    const vendorRows = this.state.data
+    const vendorRows = this.state.data;
+    const currentPage = this.state.currentPage;
+    const itemsPerPage = this.state.itemsPerPage;
     return (
       <div>
         <h1>Chicago Vendor Payment Amounts</h1>
         <Table data={vendorRows} />
+        <Pagination 
+        vendors={vendorRows} 
+        currentPage={currentPage} 
+        itemsPerPage={itemsPerPage} 
+        onPageChange={this.changePage}/>
       </div>
     );
   }
