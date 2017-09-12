@@ -43,7 +43,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Chicago Vendor Payment Amounts</h1>
-        <Table data={vendorRows} />
+        <Table data={vendorRows} currentPage={currentPage}/>
         <Pagination 
         vendors={vendorRows} 
         currentPage={currentPage} 
