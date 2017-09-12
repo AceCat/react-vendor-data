@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import { Table, TableRow } from './table.js';
+import { Table } from './table.js';
 import { Pagination } from './paginate.js'
 var api = require('./api.js');
 

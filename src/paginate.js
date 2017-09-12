@@ -14,7 +14,7 @@ export class Pagination extends React.Component{
 
 	render(){
 		let totalItems = this.props.vendors.length
-		let currentPage = parseInt(this.props.currentPage)
+		let currentPage = parseInt(this.props.currentPage, 10)
 		let itemsPerPage = this.props.itemsPerPage
 		let totalPages = Math.ceil(totalItems/itemsPerPage)
 		let startPage, endPage;
@@ -28,15 +28,12 @@ export class Pagination extends React.Component{
         if (currentPage <= 6) {
                 startPage = 1;
                 endPage = 10;
-                console.log(currentPage)
             } else if (currentPage + 4 >= totalPages) {
                 startPage = totalPages - 9;
                 endPage = totalPages;
             } else {
                 startPage = currentPage - 5;
                 endPage = currentPage + 4;
-                console.log(currentPage)
-                console.log(endPage)
             }
         
         const renderLimitedPages = []
@@ -47,7 +44,13 @@ export class Pagination extends React.Component{
 		return(
           <div>
             <ul id="page-numbers">
+            <li id='1' onClick={this.handleClick}>First</li>
+            <li id={currentPage - 1} onClick={this.handleClick}>Back</li>
               {renderLimitedPages}
+            <li id={currentPage + 1} onClick={this.handleClick}>Next</li>
+            <li id={totalPages} onClick={this.handleClick}>Last</li>
+
+
             </ul>
           </div>	
         )

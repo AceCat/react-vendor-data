@@ -1,5 +1,4 @@
 var React = require('react');
-var api = require('./api.js');
 var numeral = require('numeral');
 
 
@@ -31,15 +30,15 @@ export class Table extends React.Component {
 
 		vendorRows.forEach(function(vendor, index) {
 			if (index + 1 <= (currentPage * 10) && index >= currentPage * 10 - 10) {
-			renderRows.push(<TableRow rank={index + 1} vendor_name={vendor.vendor_name} amount={vendor.total} />);
-		}
+				renderRows.push(<TableRow key={index} rank={index + 1} vendor_name={vendor.vendor_name} amount={vendor.total} />);
+			}
 		})
 		return (
-		<table>
-			<tbody>
-				{renderRows}
-			</tbody>
-		</table>
-	)
+			<table>
+				<tbody>
+					{renderRows}
+				</tbody>
+			</table>
+		)
 	}
 }
