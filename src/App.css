@@ -36,16 +36,16 @@ table {
 }
 
 .pagination.active {
-    background-color: #4CAF50;
+    background-color: #4786ed;
     color: white;
 }
 
 .pagination:hover:not(.active) {background-color: #ddd;}
 
 thead {
-    background-color: #4CAF50;
+    background-color: #4786ed;
     color: white;
     font-weight: bold;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2}
+tr:nth-child(even) {background-color: #dddddd}
