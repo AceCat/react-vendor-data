@@ -15,5 +15,13 @@ module.exports = {
 		.then(function (response) {
 			return response.data
 		});
+	},
+
+	fetchAscendingVendorAmt: function(){
+		var URIquery = window.encodeURI('https://data.cityofchicago.org/resource/rjgc-4h37.json?$query=SELECT vendor_name, SUM(amount) AS total GROUP BY vendor_name');
+		return axios.get(URIquery)
+		.then(function (response) {
+			return response.data
+		});
 	}
 };

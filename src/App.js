@@ -32,19 +32,18 @@ class App extends React.Component {
     const vendorRows = this.state.data;
     const currentPage = this.state.currentPage;
     const itemsPerPage = this.state.itemsPerPage;
-    const self = this;
 
   if (this.state.queryType === 'vendors') {
       api.fetchDescendingVendorAmt()
-      .then(function (response) {
-        self.setState({
+      .then((response) => {
+        this.setState({
           data: response
         });
     })
   } else if (this.state.queryType === 'payments') {
       api.fetchDescendingPaymentAmt()
-      .then(function (response) {
-        self.setState({
+      .then((response) => {
+        this.setState({
           data: response
         });
     })

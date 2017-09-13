@@ -1,22 +1,27 @@
 var React = require('react');
 
+
 export class Pagination extends React.Component{ 
 
 	constructor(props) {
-		super(props)
+		super(props);
 		this.changePage = this.changePage.bind(this);
 	}
 
 	changePage(event) {
-		this.props.onPageChange(event.target.id)
-    };
-
+		if (event.target.id < 1) {
+			event.target.id = 1;
+		} else if (event.target.id > 100) {
+			event.target.id = 100;
+		}
+		this.props.onPageChange(event.target.id);
+    }
 
 	render(){
-		let totalItems = this.props.vendors.length
-		let currentPage = parseInt(this.props.currentPage, 10)
-		let itemsPerPage = this.props.itemsPerPage
-		let totalPages = Math.ceil(totalItems/itemsPerPage)
+		let totalItems = this.props.vendors.length;
+		let currentPage = parseInt(this.props.currentPage, 10);
+		let itemsPerPage = this.props.itemsPerPage;
+		let totalPages = Math.ceil(totalItems/itemsPerPage);
 		let startPage, endPage;
 
         const pageNumbers = [];
@@ -24,23 +29,26 @@ export class Pagination extends React.Component{
           pageNumbers.push(i);
         }
 
-        if (currentPage <= 6) {
-            startPage = 1;
-            endPage = 10;
-        } else if (currentPage + 4 >= totalPages) {
-            startPage = totalPages - 9;
-            endPage = totalPages;
-        } else {
-            startPage = currentPage - 5;
-            endPage = currentPage + 4;
-        }
+        var getVisibleBand = function() {
+	        if (currentPage <= 6) {
+	            startPage = 1;
+	            endPage = 10;
+	        } else if (currentPage + 4 >= totalPages) {
+	            startPage = totalPages - 9;
+	            endPage = totalPages;
+	        } else {
+	            startPage = currentPage - 5;
+	            endPage = currentPage + 4;
+	        }
+   		};
+    	getVisibleBand();
         
-        const renderLimitedPages = []
+        const renderLimitedPages = [];
         for (let i = startPage; i <= endPage; i++){
         	if (i === currentPage) {
-        		renderLimitedPages.push(<li className='pagination active' id={i} key={i} onClick={this.changePage}>{i}</li>)
+        		renderLimitedPages.push(<li className='pagination active' id={i} key={i} onClick={this.changePage}>{i}</li>);
         	} else {
-        		renderLimitedPages.push(<li className='pagination' id={i} key={i} onClick={this.changePage}>{i}</li>)
+        		renderLimitedPages.push(<li className='pagination' id={i} key={i} onClick={this.changePage}>{i}</li>);
         	}
         }
 

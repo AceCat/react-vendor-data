@@ -6,10 +6,10 @@ var numeral = require('numeral');
 export class TableRow extends React.Component{ 
 
   render() {
-  	let vendorName = this.props.vendor_name
-  	let vendorAmount = this.props.amount
-  	let rank = this.props.rank
-  	vendorAmount = numeral(vendorAmount).format('$0,0.00')
+  	let vendorName = this.props.vendor_name;
+  	let vendorAmount = this.props.amount;
+  	let rank = this.props.rank;
+  	vendorAmount = numeral(vendorAmount).format('$0,0.00');
     return (
       <tr>
       	<td>{rank}</td>
