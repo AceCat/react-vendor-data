@@ -4,10 +4,10 @@ export class Pagination extends React.Component{
 
 	constructor(props) {
 		super(props)
-		this.handleClick = this.handleClick.bind(this);
+		this.changePage = this.changePage.bind(this);
 	}
 
-	handleClick(event) {
+	changePage(event) {
 		this.props.onPageChange(event.target.id)
     };
 
@@ -39,20 +39,20 @@ export class Pagination extends React.Component{
         const renderLimitedPages = []
         for (let i = startPage; i <= endPage; i++){
         	if (i === currentPage) {
-        		renderLimitedPages.push(<li className='pagination active' id={i} key={i} onClick={this.handleClick}>{i}</li>)
+        		renderLimitedPages.push(<li className='pagination active' id={i} key={i} onClick={this.changePage}>{i}</li>)
         	} else {
-        		renderLimitedPages.push(<li className='pagination' id={i} key={i} onClick={this.handleClick}>{i}</li>)
+        		renderLimitedPages.push(<li className='pagination' id={i} key={i} onClick={this.changePage}>{i}</li>)
         	}
         }
 
 		return(
           <div>
           	<ul className='center' id="page-numbers">
-            	<li className='pagination' id='1' onClick={this.handleClick}>First</li>
-            	<li className='pagination' id={currentPage - 1} onClick={this.handleClick}>Back</li>
+            	<li className='pagination' id='1' onClick={this.changePage}>First</li>
+            	<li className='pagination' id={currentPage - 1} onClick={this.changePage}>Back</li>
               	{renderLimitedPages}
-            	<li className='pagination' id={currentPage + 1} onClick={this.handleClick}>Next</li>
-            	<li className='pagination' id={totalPages} onClick={this.handleClick}>Last</li>
+            	<li className='pagination' id={currentPage + 1} onClick={this.changePage}>Next</li>
+            	<li className='pagination' id={totalPages} onClick={this.changePage}>Last</li>
           	</ul>
           </div>	
         )
