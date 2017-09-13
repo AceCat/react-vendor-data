@@ -34,7 +34,14 @@ export class Table extends React.Component {
 			}
 		})
 		return (
-			<table>
+			<table className="table">
+				<thead>
+					<tr>
+						<td>Rank</td>
+						<td>Vendor Name</td>
+						<td>Total Paid</td>
+					</tr>
+				</thead>
 				<tbody>
 					{renderRows}
 				</tbody>

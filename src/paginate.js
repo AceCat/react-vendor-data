@@ -38,21 +38,24 @@ export class Pagination extends React.Component{
         
         const renderLimitedPages = []
         for (let i = startPage; i <= endPage; i++){
-        	renderLimitedPages.push(<li id={i} key={i} onClick={this.handleClick}>{i}</li>)
+        	if (i === currentPage) {
+        		renderLimitedPages.push(<li className='pagination active' id={i} key={i} onClick={this.handleClick}>{i}</li>)
+        	} else {
+        		renderLimitedPages.push(<li className='pagination' id={i} key={i} onClick={this.handleClick}>{i}</li>)
+        	}
         }
 
 		return(
           <div>
-            <ul id="page-numbers">
-            <li id='1' onClick={this.handleClick}>First</li>
-            <li id={currentPage - 1} onClick={this.handleClick}>Back</li>
-              {renderLimitedPages}
-            <li id={currentPage + 1} onClick={this.handleClick}>Next</li>
-            <li id={totalPages} onClick={this.handleClick}>Last</li>
-
-
-            </ul>
+          	<ul className='center' id="page-numbers">
+            	<li className='pagination' id='1' onClick={this.handleClick}>First</li>
+            	<li className='pagination' id={currentPage - 1} onClick={this.handleClick}>Back</li>
+              	{renderLimitedPages}
+            	<li className='pagination' id={currentPage + 1} onClick={this.handleClick}>Next</li>
+            	<li className='pagination' id={totalPages} onClick={this.handleClick}>Last</li>
+          	</ul>
           </div>	
         )
 	}
 }
+

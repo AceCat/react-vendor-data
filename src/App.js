@@ -8,15 +8,14 @@ var api = require('./api.js');
 
 class App extends React.Component {
   constructor(props) {
-  super(props)
-  this.state = {
-    data: [],
-    currentPage: 1,
-    itemsPerPage: 10
+    super(props)
+    this.state = {
+      data: [],
+      currentPage: 1,
+      itemsPerPage: 10
+    }
+    this.changePage = this.changePage.bind(this);
   }
-  this.changePage = this.changePage.bind(this);
-
-}
 
 
   componentDidMount() {
@@ -40,9 +39,9 @@ class App extends React.Component {
     const currentPage = this.state.currentPage;
     const itemsPerPage = this.state.itemsPerPage;
     return (
-      <div>
-        <h1>Chicago Vendor Payment Amounts</h1>
-        <Table data={vendorRows} currentPage={currentPage}/>
+      <div className='container'>
+          <h1 className='center'>Chicago Vendor Payment Amounts</h1>
+          <Table data={vendorRows} currentPage={currentPage}/>
         <Pagination 
         vendors={vendorRows} 
         currentPage={currentPage} 
