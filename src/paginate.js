@@ -29,7 +29,7 @@ export class Pagination extends React.Component{
           pageNumbers.push(i);
         }
 
-        var getVisibleBand = function() {
+        const getVisibleBand = function() {
 	        if (currentPage <= 6) {
 	            startPage = 1;
 	            endPage = 10;
