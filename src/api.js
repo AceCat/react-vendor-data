@@ -1,7 +1,7 @@
 var axios = require('axios');
 
 module.exports = {
-	fetchDescendingContractAmt: function(){
+	fetchDescendingPaymentAmt: function(){
 		var URIquery = window.encodeURI('https://data.cityofchicago.org/resource/rjgc-4h37.json?$order=amount DESC');
 		return axios.get(URIquery)
 		.then(function (response) {
