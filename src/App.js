@@ -20,29 +20,13 @@ class App extends React.Component {
     this.changeQuery = this.changeQuery.bind(this);
   }
 
-
-  // componentDidMount() {
-  //   var self = this;
-  //   api.fetchDescendingVendorAmt()
-  //     .then(function (response) {
-  //       self.setState({
-  //         data: response
-  //       });
-  //   })
-  // }
-
   changePage(pageNum) {
     this.setState({currentPage: pageNum})
   }
 
   changeQuery(queryValue){
     this.setState({queryType: queryValue})
-    console.log(this.state.queryType)
   }
-
-
-
-
 
   render() {
     const vendorRows = this.state.data;

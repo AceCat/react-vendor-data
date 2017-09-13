@@ -9,7 +9,6 @@ export class Selector extends React.Component {
 
 	changeQuery(event) {
 		var selectedQuery = this.refs.querySelector.value
-		console.log(selectedQuery)
 		this.props.onPageChange(selectedQuery)
     };
 
@@ -22,7 +21,6 @@ export class Selector extends React.Component {
 				</select>
 				<button onClick={this.changeQuery}>Change Query</button>
 			</div>
-
 		)
 	}
 }

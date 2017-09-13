@@ -19,22 +19,21 @@ export class Pagination extends React.Component{
 		let totalPages = Math.ceil(totalItems/itemsPerPage)
 		let startPage, endPage;
 
-
         const pageNumbers = [];
         for (let i = 1; i <= totalPages; i++) {
           pageNumbers.push(i);
         }
 
         if (currentPage <= 6) {
-                startPage = 1;
-                endPage = 10;
-            } else if (currentPage + 4 >= totalPages) {
-                startPage = totalPages - 9;
-                endPage = totalPages;
-            } else {
-                startPage = currentPage - 5;
-                endPage = currentPage + 4;
-            }
+            startPage = 1;
+            endPage = 10;
+        } else if (currentPage + 4 >= totalPages) {
+            startPage = totalPages - 9;
+            endPage = totalPages;
+        } else {
+            startPage = currentPage - 5;
+            endPage = currentPage + 4;
+        }
         
         const renderLimitedPages = []
         for (let i = startPage; i <= endPage; i++){
